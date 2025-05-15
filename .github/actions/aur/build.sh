@@ -69,11 +69,13 @@ if grep -q source= PKGBUILD; then
   endgroup
 fi
 
-group Testing PKGBUILD
-source ./PKGBUILD
-paru --sync --needed --asdeps --noconfirm "${makedepends[@]}"
-makepkg -d
-endgroup
+if [[ "$push" == false ]]; then
+  group Testing PKGBUILD
+  source ./PKGBUILD
+  paru --sync --needed --asdeps --noconfirm "${makedepends[@]}"
+  makepkg -d
+  endgroup
+fi
 
 group Generating .SRCINFO
 makepkg --printsrcinfo | tee .SRCINFO

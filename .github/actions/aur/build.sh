@@ -30,7 +30,7 @@ case "$action" in
 esac
 
 group Updating archlinux-keyring
-sudo pacman -S --noconfirm archlinux-keyring
+sudo pacman -S --noconfirm --needed archlinux-keyring
 endgroup
 
 if [[ "$push" = true ]]; then

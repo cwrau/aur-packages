@@ -24,4 +24,4 @@ chown -vR builder:builder /home/builder
 chmod -vR 0600 /home/builder/.ssh/*
 endgroup
 
-exec runuser builder --command 'bash -l -c /build.sh'
+exec runuser builder --command "$@"

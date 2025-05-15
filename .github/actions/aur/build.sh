@@ -5,8 +5,6 @@ set -euo pipefail
 
 action="${INPUT_ACTION?}"
 pkgname="${INPUT_PKGNAME?}"
-git_email="${INPUT_AUR_EMAIL?}"
-git_username="${INPUT_AUR_USERNAME?}"
 
 function group() {
   echo ::group::"$*"
@@ -22,6 +20,8 @@ case "$action" in
   "publish")
     push=true
     ssh_private_key="${INPUT_AUR_SSH_PRIVATE_KEY?}"
+    git_email="${INPUT_AUR_EMAIL?}"
+    git_username="${INPUT_AUR_USERNAME?}"
     ;;
   *)
     echo "Invalid action: $action, can only be 'validate' or 'publish'"
@@ -33,7 +33,7 @@ group Updating archlinux-keyring
 sudo pacman -S --noconfirm archlinux-keyring
 endgroup
 
-if [[ -v ssh_private_key ]]; then
+if [[ "$push" = true ]]; then
   group Configuring SSH
   ssh-keyscan -v aur.archlinux.org | tee -a "$HOME/.ssh/known_hosts"
   echo "$ssh_private_key" >"$HOME/.ssh/id_ed25519"
@@ -41,14 +41,16 @@ if [[ -v ssh_private_key ]]; then
   endgroup
 fi
 
-group Configuring GIT
-git config --global user.name "$git_username"
-git config --global user.email "$git_email"
-endgroup
+if [[ "$push" = true ]]; then
+  group Configuring GIT
+  git config --global user.name "$git_username"
+  git config --global user.email "$git_email"
+  endgroup
+fi
 
 group Cloning existing AUR package
 url=aur.archlinux.org/$pkgname.git
-if [[ -v ssh_private_key ]]; then
+if [[ "$push" = true ]]; then
   git clone -v "ssh://aur@$url" /tmp/local-repo
 else
   git clone -v "https://$url" /tmp/local-repo
@@ -64,19 +66,20 @@ cd /tmp/local-repo
 if grep -q source= PKGBUILD; then
   group Updating checksums
   updpkgsums
-  git diff PKGBUILD
   endgroup
 fi
 
 group Testing PKGBUILD
-PACMAN="paru" PACMAN_AUTH="eval" makepkg -fs --noconfirm
+source ./PKGBUILD
+paru --sync --needed --asdeps --noconfirm "${makedepends[@]}"
+makepkg -d
 endgroup
 
 group Generating .SRCINFO
 makepkg --printsrcinfo | tee .SRCINFO
 endgroup
 
-if [[ "$push" == true ]] && git diff-index -q HEAD; then
+if [[ "$push" == true ]] && ! git diff-index -q HEAD; then
   group Committing changes
   git commit . -m "chore: sync from github"
   endgroup

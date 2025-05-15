@@ -7,10 +7,11 @@
     ":semanticCommitScope(deps)",
     "helpers:pinGitHubActionDigests"
   ],
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": [
-        "(^|/)PKGBUILD$"
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)PKGBUILD$/"
       ],
       "matchStrings": [
         "pkgver=(?<currentValue>.*) # renovate: datasource=(?<datasource>.*) depName=(?<depName>.*)"

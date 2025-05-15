@@ -81,7 +81,7 @@ group Generating .SRCINFO
 makepkg --printsrcinfo | tee .SRCINFO
 endgroup
 
-if [[ "$push" == true ]] && ! git diff-index -q HEAD; then
+if [[ "$push" == true ]] && ! git diff-index --quiet HEAD; then
   group Committing changes
   git commit . -m "chore: sync from github"
   endgroup

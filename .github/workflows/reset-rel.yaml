@@ -2,9 +2,8 @@ name: Reset pkgrel in PKGBUILD
 
 on:
   pull_request:
-    types:
-      - opened
-      - synchronize
+    paths:
+      - '*/PKGBUILD'
     branches:
       - main
 
@@ -39,7 +38,7 @@ jobs:
           set -euo pipefail
 
           if git diff origin/main "$PACKAGE/PKGBUILD" | grep -q pkgver; then
-            sed -i -r 's#pkgrel=[0-9]+#pkgrel=1#g' "$PACKAGE/PKGBUILD"
+            sed -i -r 's#^pkgrel=[0-9]+#pkgrel=1#g' "$PACKAGE/PKGBUILD"
             echo changed=true | tee -a "$GITHUB_OUTPUT"
           else
             echo changed=false | tee -a "$GITHUB_OUTPUT"

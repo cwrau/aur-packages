@@ -2,9 +2,8 @@ name: Validate PKGBUILD
 
 on:
   pull_request:
-    types:
-      - opened
-      - synchronize
+    paths:
+      - '*/PKGBUILD'
     branches:
       - main
 

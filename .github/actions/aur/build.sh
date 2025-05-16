@@ -71,8 +71,12 @@ fi
 
 if [[ "$push" == false ]]; then
   group Testing PKGBUILD
+  set +eu
   source ./PKGBUILD
-  paru --sync --needed --asdeps --noconfirm "${makedepends[@]}"
+  set -eu
+  if [[ -v makedepends && "${#makedepends[@]}" -gt 0 ]]; then
+    paru --sync --needed --asdeps --noconfirm "${makedepends[@]}"
+  fi
   makepkg -d
   endgroup
 fi

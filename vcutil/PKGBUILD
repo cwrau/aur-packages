@@ -3,7 +3,7 @@
 pkgbase=vcutil
 pkgname=(ipmikvm)
 pkgver=1.54 # renovate: datasource=github-tags depName=ossobv/vcutil
-pkgrel=6
+pkgrel=1
 pkgdesc="Misc. simple utilities to aid version control and host maintenance."
 license=()
 arch=('any')

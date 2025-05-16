@@ -37,7 +37,7 @@ jobs:
 
           set -euo pipefail
 
-          if git diff origin/main "$PACKAGE/PKGBUILD" | grep -q pkgver; then
+          if git cat-file -e origin/main:"$PACKAGE/PKGBUILD" && git diff origin/main "$PACKAGE/PKGBUILD" | grep -q pkgver; then
             sed -i -r 's#^pkgrel=[0-9]+#pkgrel=1#g' "$PACKAGE/PKGBUILD"
             echo changed=true | tee -a "$GITHUB_OUTPUT"
           else

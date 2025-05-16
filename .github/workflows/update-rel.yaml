@@ -1,4 +1,4 @@
-name: Update rel in PKGBUILD
+name: Reset pkgrel in PKGBUILD
 
 on:
   pull_request:
@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  update-rel:
+  reset-pkgrel:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -38,7 +38,7 @@ jobs:
           set -euo pipefail
 
           if git diff origin/main "$PACKAGE/PKGBUILD" | grep -q pkgver; then
-            sed -r 's#pkgrel=[0-9]+#pkgrel=1#g' "$PACKAGE/PKGBUILD"
+            sed -ir 's#pkgrel=[0-9]+#pkgrel=1#g' "$PACKAGE/PKGBUILD"
             echo changed=true | tee -a "$GITHUB_OUTPUT"
           else
             echo changed=false | tee -a "$GITHUB_OUTPUT"

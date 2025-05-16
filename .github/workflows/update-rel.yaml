@@ -1,0 +1,54 @@
+name: Update rel in PKGBUILD
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+    branches:
+      - main
+
+jobs:
+  update-rel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+
+      - name: Find updated package
+        id: getPackage
+        run: |
+          #!/usr/bin/env bash
+          set -euxo pipefail
+
+          echo "package=$(git diff --name-only HEAD HEAD~1 "*/PKGBUILD" | head -1 | xargs dirname)" | tee -a "$GITHUB_OUTPUT"
+
+
+      - name: Reset pkgrel
+        id: resetPkgrel
+        if: ${{ steps.getPackage.outputs.package != '' }}
+        env:
+          PACKAGE: ${{ steps.getPackage.outputs.package }}
+        run: |
+          [[ "$RUNNER_DEBUG" == 1 ]] && set -x
+
+          set -euo pipefail
+
+          if git diff origin/main "$PACKAGE/PKGBUILD" | grep -q pkgver; then
+            sed -r 's#pkgrel=[0-9]+#pkgrel=1#g' "$PACKAGE/PKGBUILD"
+            echo changed=true | tee -a "$GITHUB_OUTPUT"
+          else
+            echo changed=false | tee -a "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit PKGBUILD
+        if: ${{ steps.resetPkgrel.outputs.changed == 'true' }}
+        uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9
+        with:
+          message: "ci: [bot] Reset pkgrel"
+          default_author: github_actions
+          push: true
+          add: ${{ steps.getPackage.outputs.package }}/PKGBUILD

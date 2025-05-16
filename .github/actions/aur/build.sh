@@ -36,7 +36,7 @@ case "$action" in
     ;;
 esac
 
-sudo chown -R "$UID:$GID" "$pkgname"
+sudo chown -R "$USER" "$pkgname"
 
 cd "$pkgname"
 

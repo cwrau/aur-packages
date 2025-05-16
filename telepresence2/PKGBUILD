@@ -2,7 +2,7 @@
 
 pkgname=telepresence2
 pkgver=2.22.4 # renovate: datasource=github-releases depName=telepresenceio/telepresence
-pkgrel=2
+pkgrel=1
 pkgdesc="Local development against a remote Kubernetes or OpenShift cluster"
 arch=('x86_64')
 license=('Apache')

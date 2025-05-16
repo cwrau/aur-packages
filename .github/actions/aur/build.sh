@@ -13,15 +13,22 @@ function endgroup() {
   echo ::endgroup::
 }
 
+push=false
+validate=false
+updatePkgsums=false
+
 case "$action" in
-  "validate")
-    push=false
+  validate)
+    validate=true
     ;;
-  "publish")
+  publish)
     push=true
     ssh_private_key="${INPUT_AUR_SSH_PRIVATE_KEY?}"
     git_email="${INPUT_AUR_EMAIL?}"
     git_username="${INPUT_AUR_USERNAME?}"
+    ;;
+  updatePkgsums)
+    updatePkgsums=true
     ;;
   *)
     echo "Invalid action: $action, can only be 'validate' or 'publish'"
@@ -29,9 +36,22 @@ case "$action" in
     ;;
 esac
 
-group Updating archlinux-keyring
-sudo pacman -S --noconfirm --needed archlinux-keyring
-endgroup
+cd "$pkgname"
+
+updatedPkgsums=false
+if grep -q source= PKGBUILD; then
+  group Updating checksums
+  cp PKGBUILD PKGBUILD_old
+  trap "rm $PWD/PKGBUILD_old" EXIT
+  updpkgsums
+  if ! git diff --exit-code --quiet PKGBUILD_old PKGBUILD; then
+    updatedPkgsums=true
+  fi
+  if [[ -v GITHUB_OUTPUT ]]; then
+    echo updated=$updatedPkgsums | tee -a "$GITHUB_OUTPUT"
+  fi
+  endgroup
+fi
 
 if [[ "$push" = true ]]; then
   group Configuring SSH
@@ -50,7 +70,7 @@ fi
 
 group Cloning existing AUR package
 url=aur.archlinux.org/$pkgname.git
-if [[ "$push" = true ]]; then
+if [[ -v ssh_private_key ]]; then
   git clone -v "ssh://aur@$url" /tmp/local-repo
 else
   git clone -v "https://$url" /tmp/local-repo
@@ -58,18 +78,16 @@ fi
 endgroup
 
 group Copying package files
-rsync -Cav --delete "$pkgname/" /tmp/local-repo/
+rsync -Cav --delete ./ /tmp/local-repo/
 endgroup
 
 cd /tmp/local-repo
 
-if grep -q source= PKGBUILD; then
-  group Updating checksums
-  updpkgsums
+if [[ "$validate" == true ]] || [[ "$updatePkgsums" == true && "$updatedPkgsums" == true ]]; then
+  group Updating archlinux-keyring
+  sudo pacman -S --noconfirm --needed archlinux-keyring
   endgroup
-fi
 
-if [[ "$push" == false ]]; then
   group Testing PKGBUILD
   set +eu
   source ./PKGBUILD

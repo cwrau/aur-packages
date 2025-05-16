@@ -3,7 +3,7 @@
 # contributer: Alif Rachmawadi <arch@subosito.com>
 pkgname=dep-bin
 pkgver=0.5.4 # renovate: datasource=github-releases depName=golang/dep
-pkgrel=3
+pkgrel=1
 pkgdesc="Go dependency management tool"
 pkgoption1="dep-linux-amd64"
 pkgoption2="dep-linux-arm64"

@@ -37,6 +37,9 @@ case "$action" in
 esac
 
 sudo chown -R "$USER" "$pkgname"
+if [[ -v GITHUB_OUTPUT ]]; then
+  sudo chown -R "$USER" "$GITHUB_OUTPUT"
+fi
 
 cd "$pkgname"
 

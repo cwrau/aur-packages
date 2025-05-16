@@ -36,6 +36,8 @@ case "$action" in
     ;;
 esac
 
+sudo chown -R "$UID:$GID" "$pkgname"
+
 cd "$pkgname"
 
 updatedPkgsums=false

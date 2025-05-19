@@ -9,7 +9,7 @@ url="https://github.com/cilium/${_pkgname}gon"
 license=('APACHE')
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-amd64.tar.gz")
 arch=('x86_64')
-sha512sums=('7921283afc15070df96cecccf5171f218f47ac3241267bc2d564976ebe60b5cbfd997432bcbad7049af547d98f782267672872169e4c90e6f85a87d961e92ce6')
+sha512sums=('0b27af664331b068a59096e0e78a2d73cbfb2fc830dd51b7ee264a2ea152b1685f2e04b8c33e74d37da8949205447805068aba91107cc3a36037afc3e95a712f')
 conflicts=("$_pkgname" "${_pkgname}-git")
 
 package() {

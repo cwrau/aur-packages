@@ -4,9 +4,10 @@
     "config:recommended",
     ":rebaseStalePrs",
     ":semanticCommits",
-    ":semanticCommitScope(deps)",
     "helpers:pinGitHubActionDigests"
   ],
+  "semanticCommitScope": "{{parentDir}}/dependencies",
+  "additionalBranchPrefix": "{{parentDir}}-",
   "customManagers": [
     {
       "customType": "regex",

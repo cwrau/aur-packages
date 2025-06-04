@@ -11,7 +11,7 @@ makedepends=('go' 'git' 'make' 'jq')
 backup=()
 depends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/telepresenceio/telepresence/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('055320e041244f3c17d0d9b3e0ecb7df')
+md5sums=('222f733d50c4e83530ee8c800d18c354')
 
 package() {
   cd "${srcdir}/telepresence-${pkgver}"

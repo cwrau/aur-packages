@@ -94,13 +94,15 @@ if [[ "$validate" == true ]] || [[ "$updatePkgsums" == true && "$updatedPkgsums"
   endgroup
 
   group Testing PKGBUILD
-  set +eu
-  source ./PKGBUILD
-  set -eu
-  if [[ -v makedepends && "${#makedepends[@]}" -gt 0 ]]; then
-    paru --sync --needed --asdeps --noconfirm "${makedepends[@]}"
-  fi
-  makepkg -d
+  (
+    set +eu
+    source ./PKGBUILD
+    set -eu
+    if [[ -v makedepends && "${#makedepends[@]}" -gt 0 ]]; then
+      paru --sync --needed --asdeps --noconfirm "${makedepends[@]}"
+    fi
+    makepkg -d
+  )
   endgroup
 fi
 

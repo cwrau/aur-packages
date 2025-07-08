@@ -1,5 +1,8 @@
 name: publish
 
+concurrency:
+  group: publish
+
 on:
   push:
     branches:

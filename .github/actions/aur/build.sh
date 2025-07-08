@@ -83,7 +83,7 @@ fi
 endgroup
 
 group Copying package files
-rsync -avv --include-from=<(git ls-files) --exclude='*' --delete-excluded ./ /tmp/local-repo/
+rsync -avv --include-from=<(git ls-files) --exclude='*' --filter='P .git' --delete-excluded ./ /tmp/local-repo/
 endgroup
 
 cd /tmp/local-repo

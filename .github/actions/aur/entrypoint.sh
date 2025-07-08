@@ -24,4 +24,8 @@ chown -vR builder:builder /home/builder
 chmod -vR 0600 /home/builder/.ssh/*
 endgroup
 
+group Changing ownership of git directory
+chown -vR builder:builder "${GITHUB_WORKSPACE:-.}"
+endgroup
+
 exec runuser builder --command "$@"

@@ -6,6 +6,7 @@
     ":semanticCommits",
     "helpers:pinGitHubActionDigests"
   ],
+  "automerge": true,
   "semanticCommitScope": "{{parentDir}}/dependencies",
   "additionalBranchPrefix": "{{parentDir}}-",
   "customManagers": [

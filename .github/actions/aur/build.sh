@@ -83,7 +83,7 @@ fi
 endgroup
 
 group Copying package files
-rsync -Cav --delete ./ /tmp/local-repo/
+rsync -av --include-from=<(git ls-files) --exclude='*' --delete-excluded ./ /tmp/local-repo/
 endgroup
 
 cd /tmp/local-repo
@@ -110,7 +110,8 @@ endgroup
 
 if [[ "$push" == true ]] && ! git diff-index --quiet HEAD; then
   group Committing changes
-  git commit . -m "chore: sync from github"
+  git add . -f
+  git commit -m "chore: sync from github"
   endgroup
 
   group Pushing changes

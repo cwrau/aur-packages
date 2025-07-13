@@ -3,7 +3,7 @@
 _pkgname=kftui
 pkgname=$_pkgname-bin
 pkgver=0.20.1 # renovate: datasource=github-releases depName=hcavarsan/kftray
-pkgrel=2
+pkgrel=1
 pkgdesc="🦀 ⚡ kubectl port forward manager, with support for UDP and proxy connections through k8s clusters"
 url="https://github.com/hcavarsan/kftray"
 license=('GPL-3.0-only')

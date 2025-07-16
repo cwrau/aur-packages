@@ -3,7 +3,7 @@
 _pkgname=kubectl-ai
 pkgname=$_pkgname-bin
 pkgver=0.0.17 # renovate: datasource=github-releases depName=GoogleCloudPlatform/kubectl-ai
-pkgrel=2
+pkgrel=1
 pkgdesc="AI powered Kubernetes Assistant"
 url="https://github.com/GoogleCloudPlatform/$_pkgname"
 license=('Apache-2.0')

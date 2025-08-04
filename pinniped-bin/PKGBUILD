@@ -3,7 +3,7 @@
 _pkgname=pinniped
 pkgname=$_pkgname-bin
 pkgver=0.40.0 # renovate: datasource=github-releases depName=vmware-tanzu/pinniped
-pkgrel=2
+pkgrel=1
 pkgdesc="Pinniped provides identity services for Kubernetes clusters"
 url="https://github.com/vmware-tanzu/$_pkgname"
 license=('Apache-2.0')

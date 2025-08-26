@@ -11,7 +11,7 @@ source=(
   "$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${_pkgname}_Linux_x86_64.tar.gz"
 )
 arch=('x86_64')
-sha512sums=('f5e4e5bc68708664f0a4e06bcbda1fb162d30f263836a2cb0ba716fc720d98d5f17174fd07e75a109beafb569685c9e309e5aa271ad61d0289755f45d951eea2')
+sha512sums=('1cb63a2986bda83c7b3249a94fbafb18510a5029605ef28d1ce82dcc8a429f18f4cccfbbcf68abb3732a5b5697e8dca1eadffaffb5684b4655842f803600830e')
 conflicts=("$_pkgname" "${_pkgname}-git")
 
 package() {

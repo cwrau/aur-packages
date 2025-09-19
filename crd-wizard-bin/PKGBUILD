@@ -2,7 +2,7 @@
 
 _pkgname=crd-wizard
 pkgname=$_pkgname-bin
-pkgver=0.1.2 # renovate: datasource=github-releases depName=pehlicd/crd-wizard
+pkgver=0.1.3 # renovate: datasource=github-releases depName=pehlicd/crd-wizard
 pkgrel=1
 pkgdesc="CR(D) Wizard is a web and tui based dashboard [for viewing CRDs]"
 url="https://github.com/pehlicd/crd-wizard"

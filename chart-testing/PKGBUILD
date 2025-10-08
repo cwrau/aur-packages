@@ -5,7 +5,7 @@
 
 pkgname=chart-testing
 pkgver=3.14.0 # renovate: datasource=github-releases depName=helm/chart-testing
-pkgrel=2
+pkgrel=1
 pkgdesc='CLI tool for linting and testing Helm charts'
 arch=('x86_64' 'aarch64' 'armv6h')
 url='https://github.com/helm/chart-testing'

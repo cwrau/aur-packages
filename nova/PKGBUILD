@@ -10,7 +10,7 @@ url="https://github.com/FairwindsOps/$pkgname"
 license=(Apache)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('e5839e6363e5e68d63b10526ef76805d')
+md5sums=('a1dde42927da1e84eeb5ec084af920ee')
 
 build() {
   cd nova-$pkgver

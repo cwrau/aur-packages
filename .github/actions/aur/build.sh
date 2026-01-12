@@ -99,7 +99,7 @@ if [[ "$validate" == true ]] || [[ "$updatePkgsums" == true && "$updatedPkgsums"
     source ./PKGBUILD
     set -eu
     if [[ -v makedepends && "${#makedepends[@]}" -gt 0 ]]; then
-      paru --sync --needed --asdeps --noconfirm "${makedepends[@]}"
+      yay --sync --needed --asdeps --noconfirm "${makedepends[@]}"
     fi
     makepkg -d
   )

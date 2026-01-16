@@ -2,7 +2,7 @@
 
 _pkgname=helmrelease-tools
 pkgname=$_pkgname
-pkgver=2.12.2
+pkgver=2.12.3
 pkgrel=1
 pkgdesc="Scripts to work with flux HelmReleases"
 license=('Apache-2.0')

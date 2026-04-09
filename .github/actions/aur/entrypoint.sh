@@ -31,7 +31,7 @@ chown -vR builder:builder "${GITHUB_WORKSPACE:-.}"
 endgroup
 
 group Running command
-runuser builder --command "$@"
+runuser --command "$@" builder
 endgroup
 
 group Changing ownership of git directory back

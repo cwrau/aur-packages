@@ -1,7 +1,7 @@
 # Maintainer Chris Werner Rau <aur@cwrau.io>
 
 pkgname=nodejs-paperclipai
-pkgver=2026.427.0 # renovate: datasource=npm depName=paperclipai
+pkgver=2026.428.0 # renovate: datasource=npm depName=paperclipai
 pkgrel=1
 pkgdesc="Paperclip CLI — orchestrate AI agent teams to run a business"
 arch=("x86_64")

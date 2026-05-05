@@ -20,5 +20,9 @@
       ],
       "extractVersionTemplate": "^v?(?<version>.*)$"
     }
+  ],
+  "timezone": "Europe/Berlin",
+  "schedule": [
+    "at 10:00 on Monday"
   ]
 }

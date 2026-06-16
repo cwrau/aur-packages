@@ -3,7 +3,7 @@
 _pkgname=codebase-memory-mcp
 pkgbase=$_pkgname-bin
 pkgname=($_pkgname-bin $_pkgname-ui-bin)
-pkgver=0.6.1 # renovate: datasource=github-releases depName=DeusData/codebase-memory-mcp
+pkgver=0.8.1 # renovate: datasource=github-releases depName=DeusData/codebase-memory-mcp
 pkgrel=1
 pkgdesc="High-performance code intelligence MCP server with persistent knowledge graph"
 url="https://github.com/DeusData/$_pkgname"

@@ -23,6 +23,6 @@
   ],
   "timezone": "Europe/Berlin",
   "schedule": [
-    "at 10:00 on Monday"
+    "* 10-17 * * 1"
   ]
 }

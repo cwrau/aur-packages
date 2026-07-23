@@ -13,8 +13,8 @@ provides=(telepresence2)
 depends=(sshfs)
 conflicts=("$_pkgname-git" "$_pkgname")
 source_x86_64=("$_name-$pkgver-x86_64::$url/releases/download/v${pkgver}/telepresence-linux-amd64")
-sha512sums_x86_64=('4b145f65264cfa235d664fdbc084869ded5ff108e5b4be574c9b1076a544532293bbff7a1a73c0f4e265a566e992184e0f7c5656e60003593d2a1cc9500f07ca')
-sha512sums_aarch64=('69c591b1cfa0185ade78feb1a85e36d6ee6134b6804409aced1cbcb794ef77999c50526b270b59e039b54d9b9f781b010faf468c473899eda979a902addddf53')
+sha512sums_x86_64=('2713b7d3a1f5b2271216f97053fd624eec4f716a9576f6f557266cc6e7727d29e787a091bd2dfd6d2122cc93374eccd013c3ea951571c3422bcf04e431f1a603')
+sha512sums_aarch64=('c1a7fcb7f40a67e68ee74bcea2489c3b88e99273ce0b1021bcbc9fd6b105a85dca61fd6a8e72f6d00dcacb51722704aa50be2da9bd84af388c3b4693c2adf0ec')
 source_aarch64=("$_name-$pkgver-aarch64::$url/releases/download/v${pkgver}/telepresence-linux-arm64")
 
 package() {

@@ -16,8 +16,8 @@ source_x86_64=(
 source_aarch64=(
   "$_pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/${_pkgname}-linux-arm64"
 )
-sha512sums_x86_64=('7409e6ba761477b9ae44630b2f59fbb4e5215dccf9c01b25b3cdb0e34555ecbc27f27345a5776a31edee7fba6cbb2e7b991c6c6f00296679eebd1a57d59eef4c')
-sha512sums_aarch64=('e864e476adf2d275ff9468114fa78fd092eeefada9d82da9960f0566a472f3e9279ab753f476bb13167f5fadb692609ebdc2e260fd740635158613e016f7cd1e')
+sha512sums_x86_64=('453129f18ec28c1e8ad01e0953992eff89e475aaaa8e89a8720b81159f20c0272af06d681653cc14831998a07ba615dfc99e437ca8908e3acc836c7b73cb2a19')
+sha512sums_aarch64=('48e5b0de9c388094a3589b39f3df6aa07ed9bd0aca57fd8243ba62f51b96c66d6a720849d8ab90f167ea65aea41f5b1caf82aa0a73b7d094e876cdb704972060')
 
 package() {
   install -D -m 0755 "$srcdir/$_pkgname-$pkgver-$CARCH" "$pkgdir/usr/bin/$_pkgname"

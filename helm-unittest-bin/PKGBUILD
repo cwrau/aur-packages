@@ -3,7 +3,7 @@
 _pkgname=helm-unittest
 _pluginname=unittest
 pkgname=$_pkgname-bin
-pkgver=1.1.1 # renovate: datasource=github-releases depName=helm-unittest/helm-unittest
+pkgver=1.1.2 # renovate: datasource=github-releases depName=helm-unittest/helm-unittest
 pkgrel=1
 pkgdesc="Unit test for helm chart in YAML to keep your chart functional and robust"
 url="https://github.com/helm-unittest/helm-unittest"

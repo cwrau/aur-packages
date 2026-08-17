@@ -13,6 +13,8 @@ RUN env -C /home/builder git clone https://aur.archlinux.org/yay-bin.git && \
 
 FROM base
 
+LABEL org.opencontainers.image.source=https://github.com/cwrau/aur-packages
+
 COPY --from=yay /home/builder/yay-bin/yay-*.pkg.tar /tmp/yay.pkg.tar
 RUN pacman -U --noconfirm /tmp/yay.pkg.tar && rm -f /tmp/yay.pkg.tar
 COPY entrypoint.sh /entrypoint.sh

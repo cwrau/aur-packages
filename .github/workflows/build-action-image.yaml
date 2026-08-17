@@ -1,0 +1,38 @@
+name: Build and push action image
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/actions/aur/**'
+  pull_request:
+    paths:
+      - '.github/actions/aur/**'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Build image
+        working-directory: .github/actions/aur
+        run: podman build --tag ghcr.io/cwrau/aur-packages-action:latest .
+
+      - name: Log in to GitHub Container Registry
+        if: ${{ github.event_name != 'pull_request' }}
+        env:
+          REGISTRY_USERNAME: ${{ github.actor }}
+          REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        run: podman login ghcr.io --username "$REGISTRY_USERNAME" --password-stdin <<< "$REGISTRY_PASSWORD"
+
+      - name: Push image
+        if: ${{ github.event_name != 'pull_request' }}
+        run: podman push ghcr.io/cwrau/aur-packages-action:latest

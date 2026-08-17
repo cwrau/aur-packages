@@ -83,7 +83,9 @@ fi
 endgroup
 
 group Copying package files
-rsync -avv --include-from=<(git ls-files) --exclude='*' --filter='P .git' --delete-excluded ./ /tmp/local-repo/
+gitFilesFile="$(mktemp)"
+git ls-files >"$gitFilesFile"
+rsync -avv --include-from="$gitFilesFile" --exclude='*' --filter='P .git' --delete-excluded ./ /tmp/local-repo/
 endgroup
 
 cd /tmp/local-repo

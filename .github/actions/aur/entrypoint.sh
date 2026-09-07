@@ -10,6 +10,13 @@ function endgroup() {
   echo ::endgroup::
 }
 
+group Fetching new mirrors
+country="$(curl -fsSL https://ipinfo.io/country)"
+echo Running in $country
+echo Using mirrors:
+curl -fsSL "https://archlinux.org/mirrorlist/?country=$country&protocol=https&ip_version=4&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 - | tee /etc/pacman.d/mirrorlist
+endgroup
+
 group Creating builder user
 useradd --create-home --shell /bin/bash builder
 passwd --delete builder

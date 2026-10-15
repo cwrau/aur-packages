@@ -11,7 +11,7 @@ depends=("nodejs")
 makedepends=("npm" "python" "nodejs-addon-api")
 source=("https://registry.npmjs.org/${pkgname#nodejs-}/-/${pkgname#nodejs-}-${pkgver}.tgz")
 noextract=("${pkgname#nodejs-}-${pkgver}.tgz")
-sha512sums=('2d49a12c8c56329bc8dbca408fd371500b130399ef64826c6ececb026ec911b66a1fc797e8e547d30cde28e3524dc456c84ead2d3cf6ab38883d2a22b1c14aed')
+sha512sums=('74500a33b0dbb8efd2f9a9019c32e035285d9ec3f9bcdf97acb8b6d9e7387449e56b7a40816ee0726691c8393324edba4f9d5f6c461eace13ed35e2fdeee2e74')
 
 package() {
   export NODE_PATH=/usr/lib/node_modules

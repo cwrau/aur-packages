@@ -103,6 +103,9 @@ if [[ "$validate" == true ]] || [[ "$updatePkgsums" == true && "$updatedPkgsums"
     if [[ -v makedepends && "${#makedepends[@]}" -gt 0 ]]; then
       yay --sync --needed --asdeps --noconfirm "${makedepends[@]}"
     fi
+    if [[ -v checkdepends && "${#checkdepends[@]}" -gt 0 ]]; then
+      yay --sync --needed --asdeps --noconfirm "${checkdepends[@]}"
+    fi
     makepkg -d
   )
   endgroup

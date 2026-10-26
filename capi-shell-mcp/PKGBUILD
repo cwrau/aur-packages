@@ -1,7 +1,7 @@
 # Maintainer: Chris Werner Rau <aur@cwrau.io>
 
 pkgname=capi-shell-mcp
-pkgver=2.0.0 # renovate: datasource=github-releases depName=cwrau/capi-shell-mcp
+pkgver=2.1.0 # renovate: datasource=github-releases depName=cwrau/capi-shell-mcp
 pkgrel=1
 pkgdesc="MCP provider for capi-shell — exec into cluster-api workload clusters"
 url="https://github.com/cwrau/$pkgname"

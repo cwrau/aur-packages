@@ -14,8 +14,8 @@ source_aarch64=(
   "$_pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/${_pkgname}_linux_arm64"
 )
 arch=('x86_64' 'aarch64')
-sha512sums_x86_64=('1351aec5e826129e68b49518340d087b5e3bdad4d8aee1142bbcc87989f7960e1025ea3b384effdf26aee37d159b618e3b1afc8aa6e7dc65fbdaaa2aab05656d')
-sha512sums_aarch64=('494abd103f6957dfbb037cbc2ff3247fee1a3a419ea43c87df27cbb6b44614f45893f4add881214f01bc242075b8fdddb33b0ae55d0d60ea156a0090a069b3ad')
+sha512sums_x86_64=('3ece4b6b4c40ebe9dac4309e3b4a2cb86cda0ec746a2e71cabebfbba2c3037ea51bfc9e41a01cdc1d73f551a312f1de126dd7809796e1e150c28fb639668db35')
+sha512sums_aarch64=('f52e2882619eb9fb270c1b446802bfa6b1bcc56cbcefa3de4ba409536aa3ea70408a5535c71d3223796e27e852a7192c4323af3b8c158c0f16b2355a5f9734fd')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-git")
 

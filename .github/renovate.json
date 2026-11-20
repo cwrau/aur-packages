@@ -24,8 +24,5 @@
       "extractVersionTemplate": "^v?(?<version>.*)$"
     }
   ],
-  "timezone": "Europe/Berlin",
-  "schedule": [
-    "* 10-17 * * 1"
-  ]
+  "prHourlyLimit": 0
 }

@@ -12,7 +12,7 @@ arch=(any)
 depends=(sshfs)
 makedepends=('go' 'git' 'make' 'jq' 'fuse2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/telepresenceio/telepresence/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('709bc338c9f8539031a0bd4a41c742ed2a941eb23109c6097f26c22fdfa9f51be087ae761d0efe0782247b6b55eae4e98d00ad84a6e11f1ca9c283019c521c31')
+sha512sums=('265fc153a8ca3e98ea4d014cd85cf21144950967ab15ceadef76311b6898e8d08c4a10c11b7fabee0640c534a437b119305a05dcf0ec54643d76811835f74e1b')
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"

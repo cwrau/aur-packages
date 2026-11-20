@@ -8,7 +8,7 @@
   ],
   "automerge": true,
   "gitIgnoredAuthors": [
-    "github-actions <41898282+github-actions[bot]@users.noreply.github.com>"
+    "41898282+github-actions[bot]@users.noreply.github.com"
   ],
   "semanticCommitScope": "{{parentDir}}/dependencies",
   "additionalBranchPrefix": "{{parentDir}}-",

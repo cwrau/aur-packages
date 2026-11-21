@@ -1,7 +1,7 @@
 # Maintainer Chris Werner Rau <aur@cwrau.io>
 
 pkgname=pi-acp
-pkgver=0.0.34 # renovate: datasource=npm depName=pi-acp
+pkgver=0.0.35 # renovate: datasource=npm depName=pi-acp
 pkgrel=1
 pkgdesc="ACP adapter for the pi coding agent"
 arch=("any")
